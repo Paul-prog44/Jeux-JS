@@ -1,3 +1,16 @@
+body {
+    width: 600px;
+    margin: auto;
+}
+
 .mainImage {
-    width: 40%;
+    width: 40vh;
+}
+
+button {
+    border-radius: 15px;
+    border-style: solid;
+    border-color: rgb(64, 18, 190);
+    background-color: rgb(0, 149, 255);
+    color: white;
 }
