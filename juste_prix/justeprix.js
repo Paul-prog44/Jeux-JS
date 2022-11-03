@@ -13,7 +13,12 @@ let countDownFunction = null
 
 document.getElementById("beginGame")
         .addEventListener("click", function() {
+            document.getElementById("userGuess")
+                    .style.display ="block"
+
             numberToFind = getRandomInt(1000);
+            stopConfetti();
+            console.log(numberToFind)
             //Fonction compteur à rebours
             compteur = 30;
             if(countDownFunction != null) {
@@ -32,10 +37,18 @@ document.getElementById("beginGame")
 
                 if (compteur < 10  ) {
                     countDownDisplay.style.color = "rgb(250, 0, 0)"
+                    countDownDisplay.classList.add("suspens")
                 }
 
                 if (compteur < 0){
                     clearInterval(countDownFunction)
+                    document.getElementById("userGuess")
+                    .style.display ="none"
+                    resultDisplay.innerHTML = "Le nombre à trouver était " + numberToFind + " !"
+                    let audio = new Audio("./audio/defaite.mp3");
+                    audio.play();
+                    countDownDisplay.classList.remove("suspens")
+
                 }
             },1000)
         })
@@ -67,6 +80,9 @@ function compareNumberToFind () {
         (function() {
             let audio = new Audio("./audio/clapping.mp3");
             audio.play();
+            //fonction confetti en cas de victoire
+            startConfetti();
+            clearInterval(countDownFunction)
           })()
     }
 }
