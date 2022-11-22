@@ -7,3 +7,14 @@ table {
     text-align: center;
     font-size: 30px;
 }
+#keyboard {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.letterKeyboard {
+    padding: 30px;
+    border: 2px rgba(88, 88, 88, 0.063) solid;
+    border-radius: 10px;
+    margin: 2px;
+}

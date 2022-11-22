@@ -2,6 +2,7 @@ const buttonPlay = document.getElementById("beginGame");
 const allWords = ["fleur", "montagne", "ministre","congolais", "saltimbanque", "économie", "pétrole"];
 let max = allWords.length;
 const wordToFindDiv= document.getElementById("wordToFindDiv");
+const keyboardDiv = document.getElementById("keyboard")
 
 
 buttonPlay.addEventListener("click", function() {
@@ -29,6 +30,8 @@ function beginGame () {
     })
     table.appendChild(line);
     wordToFindDiv.appendChild(table)
+
+    generateKeyboard()
 }
 
 function generateWord() {
@@ -43,7 +46,17 @@ function getRandomInt(max) {
 }
 console.log(getRandomInt(max))
 
-function generateKeyboard(capital = false) {
+function generateKeyboard() {
+    let Alphabet = generateAlphabet();
+    Alphabet.forEach(letter => {
+        let lettreDiv = document.createElement("div")
+        lettreDiv.innerHTML = letter
+        lettreDiv.classList.add("letterKeyboard")
+        keyboardDiv.appendChild(lettreDiv)
+    })
+}
+
+function generateAlphabet(capital = false) {
     let tab = [];
     for (i=0; i<26; i++) {
         if (capital) 
